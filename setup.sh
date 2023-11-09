@@ -3,6 +3,9 @@
 ### Setup Configs ###
 cp -R ./config/. ~/
 
+### Use git-core so we can use latest stable git ###
+sudo add-apt-repository ppa:git-core/ppa -y
+
 ### Remove Unused Linux Mint Pre-installed Software ###
 sudo apt remove --purge libreoffice* -y
 sudo apt remove --purge firefox -y
@@ -53,3 +56,8 @@ flatpak install flathub org.kde.kolourpaint -y
 flatpak install flathub org.videolan.VLC -y
 flatpak install flathub io.github.spacingbat3.webcord -y
 flatpak install flathub io.gitlab.librewolf-community -y
+
+
+### Run an apt update and upgrade ###
+sudo apt update
+sudo apt upgrade -y
