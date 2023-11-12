@@ -3,3 +3,5 @@
 	name = dreamsyntax
 [init]
 	defaultBranch = main
+[push]
+	autoSetupRemote = true
