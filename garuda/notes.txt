@@ -1,0 +1,4 @@
+Cinnamon Edition
+
+Terminal Profile -> Custom Font Liberation Mono
+
