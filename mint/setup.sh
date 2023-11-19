@@ -62,7 +62,7 @@ flatpak install flathub org.kde.kolourpaint -y
 flatpak install flathub org.videolan.VLC -y
 flatpak install flathub io.github.spacingbat3.webcord -y
 flatpak install flathub io.gitlab.librewolf-community -y
-
+flatpak install flathub com.vscodium.codium -y
 ### Run an apt update and upgrade ###
 sudo apt update
 sudo apt upgrade -y
