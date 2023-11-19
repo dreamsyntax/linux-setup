@@ -9,6 +9,12 @@ sudo add-apt-repository ppa:git-core/ppa -y
 ### Remove Unused Linux Mint Pre-installed Software ###
 sudo apt remove --purge libreoffice* -y
 sudo apt remove --purge firefox -y
+sudo apt remove --purge hexchat* -y
+sudo apt remove --purge thunderbird* -y
+sudo apt remove --purge transmission* -y
+sudo apt remove --purge hypnotix* -y
+sudo apt remove --purge rhythmbox* -y
+sudo apt remove --purge celluloid* -y
 
 # Remove dependencies that are no longer needed
 sudo apt autoremove -y
@@ -16,7 +22,6 @@ sudo apt autoremove -y
 ### Replace Default Redshift Applet with QRedshift
 #cinnamon-settings applets remove redshift@marvel4u
 #cinnamon-settings applets install qredshift@quintoo
-
 
 ### Create Flatpak Aliases for Godot and CLI Use ###
 
@@ -56,7 +61,6 @@ flatpak install flathub org.kde.kolourpaint -y
 flatpak install flathub org.videolan.VLC -y
 flatpak install flathub io.github.spacingbat3.webcord -y
 flatpak install flathub io.gitlab.librewolf-community -y
-
 
 ### Run an apt update and upgrade ###
 sudo apt update
