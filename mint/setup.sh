@@ -20,7 +20,7 @@ sudo apt remove --purge celluloid* -y
 sudo apt autoremove -y
 
 ### Replace Default Redshift Applet with QRedshift
-sudo apt remove redshift-gtk
+sudo apt remove redshift-gtk -y
 #cinnamon-settings applets remove redshift@marvel4u
 #cinnamon-settings applets install qredshift@quintoo
 
