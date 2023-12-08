@@ -17,3 +17,6 @@ sudo apt install ffmpeg obs-studio -y
 # Last checked Nov 18, 2023
 # Manually run only after steam has been opened once and generates the .steam folder
 echo "@nClientDownloadEnableHTTP2PlatformLinux 0" > ~/.steam/steam/steam_dev.cfg
+
+echo "There is currently a bug where laptops with igpu and dgpu cannot launch steam via desktop shortcut."
+echo "You need to edit /usr/share/applications/steam.desktop line PrefersNonDefaultGPU=true to =false"
