@@ -4,7 +4,11 @@
 
 ## Still need to figure out the themes for terminal
 # for xed, change to "Cobalt"
-# for terminal uncheck use system theme in Terminal -> Profile and use "white on black" with palette "solarized"
+# for terminal uncheck use system theme in Terminal -> Profile:
+# use "Tango Dark"
+# Uncheck use transparency from system theme
+# Palette "Tango" with "Show bold text in bright colors" checked
+
 
 ### Setup Configs ###
 # cp -R ./config/. ~/
