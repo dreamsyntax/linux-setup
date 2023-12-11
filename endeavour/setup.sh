@@ -5,35 +5,23 @@
 ### Setup Configs ###
 # cp -R ./config/. ~/
 
+### Check for updates ###
+yay -Syu --noconfirm
+
 ### Install software ###
-yay -S librewolf-bin
-sudo pacman -S nvidia-inst
-sudo pacman -S steam
-sudo pacman -S discord
-sudo pacman -S bluez
-sudo pacman -S bluez-utils
+yay -S librewolf-bin --noconfirm
+sudo pacman -S nvidia-inst --noconfirm
+sudo pacman -S steam # this may have an important prompt 
+sudo pacman -S discord bluez bluez-utils --noconfirm
 sudo systemctl start bluetooth
 sudo systemctl enable bluetooth
-sudo pacman -S blueman
-sudo pacman -S kdenlive
-sudo pacman -Syu breeze # for kde applications not being dark theme by default
-yay -S protonup-qt-bin
-yay -S envycontrol
+sudo pacman -S blueman kdenlive redshift --noconfirm
+sudo pacman -S breeze --noconfirm # for kde applications not being dark theme by default
+yay -S protonup-qt-bin envycontrol appimagelauncher vscodium-bin --noconfirm
+sudo pacman -S blender godot --noconfirm
 
-sudo pacman -S redshift
-systemctl mask --user redshift.service
-
-yay -S appimagelauncher
-
-### Dev ###
-sudo pacman -S blender
-sudo pacman -S godot
-yay -S unityhub
-yay -S vscodium-bin
-
+# systemctl mask --user redshift.service ## Probably unnecessary
+# yay -S unityhub ## Busted; logs out of Unity Hub each launch
 
 ### Install Flatpaks ###
-flatpak install flathub com.usebottles.bottles -y
-
-
-
+# flatpak install flathub com.usebottles.bottles -y ## Only install if needed
