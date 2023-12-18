@@ -1,7 +1,6 @@
 #!/bin/bash
 
-### Setup Configs ###
-cp -R ./config/. ~/
+### Last tested on Mint 21.2 Cinnamon
 
 ### Use git-core so we can use latest stable git ###
 sudo add-apt-repository ppa:git-core/ppa -y
@@ -23,6 +22,9 @@ sudo apt autoremove -y
 sudo apt remove redshift-gtk -y
 #cinnamon-settings applets remove redshift@marvel4u
 #cinnamon-settings applets install qredshift@quintoo
+
+### Run an apt update and upgrade ###
+sudo apt update && sudo apt upgrade -y
 
 ### Create Flatpak Aliases for Godot and CLI Use ###
 
@@ -63,6 +65,3 @@ flatpak install flathub org.videolan.VLC -y
 flatpak install flathub io.github.spacingbat3.webcord -y
 flatpak install flathub io.gitlab.librewolf-community -y
 flatpak install flathub com.vscodium.codium -y
-### Run an apt update and upgrade ###
-sudo apt update
-sudo apt upgrade -y
