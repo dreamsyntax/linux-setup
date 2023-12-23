@@ -1,12 +1,22 @@
 #!/bin/bash
 
-## For Cinnamon Edition of EndeavourOS
+## For Cinnamon Edition of EndeavourOS (X11; Not Wayland)
 
 # for xed, change to "Cobalt"
 # for Terminal uncheck "use system theme" in Terminal -> Profile:
 # - use "Tango Dark"
 # - Uncheck use transparency from system theme
 # - Palette "Tango" with "Show bold text in bright colors" checked
+
+## Issues from packages
+# Need to re-set nemo as default file mangager after installing vscodium-bin,
+# and text files - they are both set to wayland vscodium for some reason
+
+## Set the steam download fix (copy from mint scripts)
+
+## Turn off middlemouse.paste in librewolf - all profiles
+
+## Turn off middle mouse paste in settings -> "mouse" (wont work for most, but better than nothing)
 
 for arg in "$@"; do
     case $arg in
