@@ -24,8 +24,11 @@ for arg in "$@"; do
             yay -Syu --noconfirm
             yay -S librewolf-bin --noconfirm # install this separately first, so the user can browse if needed while other stuff is installing
             sudo pacman -S steam # this may have an important prompt, don't noconfirm it
-            sudo pacman -S discord blueman breeze kdenlive blender godot --noconfirm
-            yay -S protonup-qt-bin webcord-bin vscodium-bin mint-themes mint-y-icons gnome-themes-extra redshift-minimal
+            sudo pacman -S discord breeze kdenlive blender godot --noconfirm
+            yay -S protonup-qt-bin webcord-bin visual-studio-code-bin mint-themes mint-y-icons gnome-themes-extra redshift-minimal
+            ;;
+        -b|--bluetooth)
+            sudo pacman -S blueman
             sudo systemctl start bluetooth
             sudo systemctl enable bluetooth
             ;;
