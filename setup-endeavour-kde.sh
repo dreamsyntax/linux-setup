@@ -2,6 +2,10 @@
 
 ## For KDE Edition of EndeavourOS
 
+## Tweaks:
+## Change Dolphin click behavior to require dolphin click to open, single click to select "General Behavior" in Settings
+## Disable auto screen off / sleep as some apps & games dont properly hook
+
 for arg in "$@"; do
     case $arg in
         -f|--firstinstall)
@@ -10,6 +14,7 @@ for arg in "$@"; do
             sudo pacman -S steam # this may have an important prompt, don't noconfirm it
             sudo pacman -S discord kdenlive blender godot kwalletmanager --noconfirm
             yay -S protonup-qt-bin webcord-bin visual-studio-code-bin --noconfirm
+            yay -S 7-zip-full --noconfirm
             ;;
         -b|--bluetooth)
             sudo systemctl start bluetooth
@@ -27,7 +32,7 @@ for arg in "$@"; do
         -g|--gitconfig)
             cp ./config/.gitconfig ~/.gitconfig
             ;;
-        -f|--flatpak)
+        -fp|--flatpak)
             sudo pacman -S flatpak
             flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
             ;;
