@@ -1,7 +1,7 @@
 #!/bin/sh
 # echo Turn on log!
 # set -x
-clear
+# clear
 function clear_stdin()
 (
     old_tty_settings=`stty -g`
@@ -14,10 +14,11 @@ function clear_stdin()
 
 if [ $# -ne 1 ];
 then
-	echo Kindly specify the i2c bus number. The default i2c bus number is 3.
+	echo Kindly specify the i2c bus number.
+	echo The default i2c bus number is 19 on cachyos, 2 on endeavouros
 	echo Command as following:
 	echo $0 i2c-bus-number
-	i2c_bus=3
+	i2c_bus=19
 else
 	i2c_bus=$1
 fi
@@ -76,4 +77,4 @@ i2cset -f -y $i2c_bus $value 0x00 0x00
 i2cset -f -y $i2c_bus $value 0x02 0x00
 count=$((${count} + 1))
 done;
-clear_stdin
+#clear_stdin
