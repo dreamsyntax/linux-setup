@@ -28,8 +28,12 @@ alias -s gs "git status"
 alias -s explorer "dolphin"
 alias -s open "dolphin"
 
+## laptop TAS2781 bug service automatic runner
+# UNCOMMENT AFTER VERIFYING https://github.com/DanielWeiner/tas2781-fix-16IRX8H
+#curl -s https://raw.githubusercontent.com/DanielWeiner/tas2781-fix-16IRX8H/refs/heads/main/install.sh | bash -s --
+
 ## laptop TAS2781 audio bug alias
-alias -s sss "sudo ~/dev/linux-setup/tas2781-2dev-on.sh 19"
+# alias -s sss "sudo ~/dev/linux-setup/tas2781-2dev-on.sh 19"
 ## laptop should be able to remove this EVENTUALLY. Needed since kernels > 6.7.9
 
 # to edit: funced -s <aliasname>
