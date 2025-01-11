@@ -18,6 +18,12 @@ sudo pacman -S dolphin-emu
 sudo pacman -S krita kimageformats5
 sudo pacman -S gimp blender godot shotcut
 
+
+## fish variables
+# export EDITOR="vim" -- bash equivalent
+set -xU EDITOR "vim"
+
+
 ## fish aliases
 alias -s dev "cd ~/dev"
 alias -s gc "git checkout"
