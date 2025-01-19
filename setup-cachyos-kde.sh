@@ -12,11 +12,18 @@ sudo systemctl enable --now fstrim.timer
 #sudo pacman -S cachyos-gaming-meta # not needed if Install Gaming packages button clicked
 sudo pacman -S keepassxc wl-clipboard
 sudo pacman -S appmenu-gtk-module libdbusmenu-glib
-paru -S vesktop-bin webcord-bin --noconfirm
+paru -S vesktop-bin --noconfirm
 paru -S visual-studio-code-bin --noconfirm
 sudo pacman -S dolphin-emu
-sudo pacman -S krita kimageformats5
 sudo pacman -S gimp blender godot shotcut
+sudo pacman -S fuse2 #for appimages
+sudo pacman -S downgrade #for inevitable downgrade breakage (typically kwin)
+
+
+#legacy software
+#paru -S webcord-bin --noconfirm
+#sudo pacman -S krita kimageformats5
+
 
 
 ## fish variables
