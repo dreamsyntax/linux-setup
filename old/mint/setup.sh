@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### Last tested on Mint 21.2 Cinnamon
+### Last tested on Mint 22.1 Cinnamon
 
 ### Use git-core so we can use latest stable git ###
 sudo add-apt-repository ppa:git-core/ppa -y
@@ -18,10 +18,8 @@ sudo apt remove --purge celluloid* -y
 # Remove dependencies that are no longer needed
 sudo apt autoremove -y
 
-### Replace Default Redshift Applet with QRedshift
+### Remove Default Redshift now that Mint 22.1 has Night Light built in
 sudo apt remove redshift-gtk -y
-#cinnamon-settings applets remove redshift@marvel4u
-#cinnamon-settings applets install qredshift@quintoo
 
 ### Run an apt update and upgrade ###
 sudo apt update && sudo apt upgrade -y
