@@ -9,6 +9,9 @@
 # SSD trim scheduler
 sudo systemctl enable --now fstrim.timer
 
+# for accessing Windows dualboot / NTFS external drives, install NTFS-3G to force using it instead of the default NTFS3 (which corrupts data over time)
+sudo pacman -S ntfs-3g
+
 # for Flatpak support
 sudo pacman -S flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
