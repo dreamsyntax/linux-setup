@@ -1,16 +1,12 @@
-#Theme -> Global Theme -> Apply Breeze Dark -> Check both boxes to reset Desktop and window layout
-#Right click bottom panel and uncheck floating, then press escape
-#Unpin discover
-#Touchpad -> Invert natural scrolling
-#CachyOS Hello -> Enter Apps/Tweaks and click Install Gaming packages
-#CachyOS Hello -> Click Bluetooth enabled
-#Settings -> General Behavior -> Middle Mouse Paste Selected Text DISABLE
+# Theme -> Global Theme -> Apply Breeze Dark -> Check both boxes to Reset Desktop and window layout
+# Right click bottom panel, "Show Panel Configuration" and uncheck "Floating", then press escape twice
+# Unpin Discover, Unpin Settings
+
+# Settings -> Touchpad -> Invert scroll direction (Natural scrolling)
+# Settings -> General Behavior -> Middle Mouse "Pastes selected text" -> Uncheck
 
 # SSD trim scheduler
 sudo systemctl enable --now fstrim.timer
-
-# for accessing Windows dualboot / NTFS external drives, install NTFS-3G to force using it instead of the default NTFS3 (which corrupts data over time)
-sudo pacman -S ntfs-3g
 
 # for Flatpak support
 sudo pacman -S flatpak
@@ -26,9 +22,20 @@ sudo pacman -S --noconfirm downgrade
 sudo pacman -S --noconfirm vesktop # discord client with hardware accelerated screen sharing
 sudo pacman -S --noconfirm vscode gimp blender godot shotcut keepassxc wl-clipboard
 
+# gaming meta, not do not install cachyos-gaming-applications (unless you want heroic launcher and lutris)
+paru -S cachyos-gaming-meta
+
+# additional common packages
+sudo pacman -S 7zip
+
+# additional gaming packages
+# gamescope # https://github.com/ValveSoftware/gamescope
+# goverlay # https://github.com/benjamimgois/goverlay
+# mangohud # resource overlay
+
 ## Disable the Discord / Vesktop & other electron apps from lowering/adjusting your Microphone gain:
 # Create local config, copying from latest to ~/.config/pipewire/pipewire-pulse.conf with:
-cp /usr/share/pipewire/pipewire-pulse.conf ~/.config/pipewire/pipewire-pulse.conf
+mkdir -p ~/.config/pipewire/ && cp /usr/share/pipewire/pipewire-pulse.conf ~/.config/pipewire/pipewire-pulse.conf
 
 # Edit, adding:
 #    {
@@ -59,5 +66,6 @@ alias -s open "dolphin"
 
 ########## LAPTOP ONLY ##########
 ## laptop TAS2781 audio bug - Creates a service that auto resets the amp and device state to prevent the bug on audio source change
+## Bug still relevant as of 2025-05-27
 # UNCOMMENT AFTER VERIFYING MANUALLY, NEVER AUTO RUN THIS https://github.com/DanielWeiner/tas2781-fix-16IRX8H
-#curl -s https://raw.githubusercontent.com/DanielWeiner/tas2781-fix-16IRX8H/refs/heads/main/install.sh | bash -s --
+# curl -s https://raw.githubusercontent.com/DanielWeiner/tas2781-fix-16IRX8H/refs/heads/main/install.sh | bash -s --
