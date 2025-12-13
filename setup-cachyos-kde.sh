@@ -98,3 +98,7 @@ sudo systemctl start supergfxd
 ## Bug still relevant as of 2025-07-15
 # UNCOMMENT AFTER VERIFYING MANUALLY, NEVER AUTO RUN THIS https://github.com/DanielWeiner/tas2781-fix-16IRX8H
 # curl -s https://raw.githubusercontent.com/DanielWeiner/tas2781-fix-16IRX8H/refs/heads/main/install.sh | bash -s --
+
+
+## Shell opt out telemetry
+# DOTNET_CLI_TELEMETRY_OPTOUT
