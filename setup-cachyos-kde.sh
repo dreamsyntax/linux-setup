@@ -85,6 +85,9 @@ alias -s open "dolphin"
 
 ########## LAPTOP ONLY ##########
 
+sudo systemctl enable sddm
+sudo pacman -Syu sddm-kcm cachyos-themes-sddm sddm
+
 # program to force iGPU mode
 sudo pacman -S supergfxctl
 sudo systemctl enable supergfxd
@@ -93,6 +96,29 @@ sudo systemctl start supergfxd
 # Usage example:
 # supergfxctl --mode Integrated
 # supergfxctl --mode Hybrid
+
+# Battery life
+sudo pacman -S auto-cpufreq
+``` TEMP - Verify later
+► sudo systemctl enable auto-cpufreq.service --now
+► sudo systemctl enable auto-cpufreq.service
+► sudo systemctl enable auto-cpufreq
+► sudo systemctl enable  auto-cpufreq
+► sudo systemctl enable --now auto-cpufreq
+
+sudo pacman -Syu plasma-login-manager
+sudo systemctl disable sddm
+sudo systemctl enable plasmalogin
+sudo pacman -R sddm-kcm cachyos-themes-sddm sddm
+```
+
+# dGPU status
+cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status
+cat /proc/driver/nvidia/gpus/0000:01:00.0/power
+
+
+# NTFS (eventually new NTFS driver will replace the bad ntfs3 one, but until then, use ntfs-3g to avoid corrupting external HDDs all the time >_>)
+sudo pacman -S ntfs-3g
 
 ## laptop TAS2781 audio bug - Creates a service that auto resets the amp and device state to prevent the bug on audio source change
 ## Bug still relevant as of 2025-07-15
