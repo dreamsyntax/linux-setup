@@ -83,11 +83,6 @@ alias -s gs "git status"
 alias -s explorer "dolphin"
 alias -s open "dolphin"
 
-# NTFS (eventually new NTFS driver will replace the bad ntfs3 one, but until then, use ntfs-3g to avoid corrupting external NTFS HDDs all the time >_>)
-# TODO: Verify does only installing this still work, or are configuration changes necessary?
-sudo pacman -S ntfs-3g
-
-
 ########## LAPTOP ONLY ##########
 
 # remove plasma-login-manager/plasmalogin and replace it with sddm
