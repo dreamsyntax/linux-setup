@@ -1,3 +1,5 @@
+To auto-select last selected OS picked in grub
+# Edit:
 /etc/default/grub
 
 change

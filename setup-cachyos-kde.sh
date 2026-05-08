@@ -1,5 +1,5 @@
 # Theme -> Global Theme -> Apply Breeze Dark -> Check both boxes to Reset Desktop and window layout
-# Right click bottom panel, "Show Panel Configuration" and uncheck "Floating", then press escape twice
+# Right click bottom panel, "Show Panel Configuration", set "Floating" to "Disabled", then press escape twice
 # Unpin Discover, Unpin Settings
 
 # Settings -> Touchpad -> Invert scroll direction (Natural scrolling)
@@ -8,8 +8,11 @@
 # Settings -> System Tray Settings -> Entries -> Bluetooth -> Always shown
 # Settings -> System Tray Settings -> Entries -> Power and Battery -> Always shown
 
-# SSD trim scheduler
-sudo systemctl enable --now fstrim.timer
+# SSD trim scheduler -- Essential for systems running on SSD. It's enabled by default in CachyOS.
+# Verify its active with:
+systemctl status fstrim.timer
+# If not, run:
+# sudo systemctl enable --now fstrim.timer
 
 # for Flatpak support
 sudo pacman -S flatpak
@@ -24,13 +27,10 @@ sudo pacman -S --noconfirm downgrade
 
 # apps
 sudo pacman -S --noconfirm vesktop # discord client with hardware accelerated screen sharing
-sudo pacman -S --noconfirm vscode gimp blender godot shotcut keepassxc wl-clipboard
+sudo pacman -S --noconfirm vscode gimp blender godot shotcut keepassxc 7zip
 
 # gaming meta, not do not install cachyos-gaming-applications (unless you want heroic launcher and lutris)
 paru -S cachyos-gaming-meta
-
-# additional common packages
-sudo pacman -S 7zip
 
 # additional gaming packages
 # gamescope # https://github.com/ValveSoftware/gamescope
@@ -53,42 +53,50 @@ sudo setcap cap_sys_ptrace=eip /usr/bin/love # required for m-overlay
 mkdir -p ~/.config/pipewire/ && cp /usr/share/pipewire/pipewire-pulse.conf ~/.config/pipewire/pipewire-pulse.conf
 
 # Edit, adding:
-#    {
-#       matches = [ { application.process.binary = "Discord" } ]
-#       actions = { quirks = [ block-source-volume ] }
-#    }
-#    {
-#       matches = [ { application.process.binary = "Vesktop" } ] # For Vesktop and other electron clients
-#       actions = { quirks = [ block-source-volume ] }
-#    }
-#    {
-#       matches = [ { application.process.binary = "electron" } ] # For Vesktop and other electron clients
-#       actions = { quirks = [ block-source-volume ] }
-#    }
+```
+    {
+       matches = [
+            { application.process.binary = "Discord" }
+            { application.process.binary = "Vesktop" }
+            { application.process.binary = "electron" } # For Vesktop and other electron apps
+       ]
+       actions = { quirks = [ block-source-volume ] }
+    }
+```
 
 ## fish variables
-# export EDITOR="vim" -- bash equivalent
 set -xU EDITOR "vim"
+set -xU DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 ## fish aliases
+# to edit: funced -s <aliasname>
+# to delete: functions -e <aliasname>; funcsave <aliasname>
 alias -s dev "cd ~/dev"
 alias -s gc "git checkout"
-alias -s gd "git diff"
 alias -s gcb "git checkout -b"
+alias -s gd "git diff"
 alias -s gp "git pull --prune"
 alias -s gs "git status"
 alias -s explorer "dolphin"
 alias -s open "dolphin"
 
-# to edit: funced -s <aliasname>
-# to delete: functions -e <aliasname>; funcsave <aliasname>
+# NTFS (eventually new NTFS driver will replace the bad ntfs3 one, but until then, use ntfs-3g to avoid corrupting external NTFS HDDs all the time >_>)
+# TODO: Verify does only installing this still work, or are configuration changes necessary?
+sudo pacman -S ntfs-3g
+
 
 ########## LAPTOP ONLY ##########
 
+# remove plasma-login-manager/plasmalogin and replace it with sddm
+# This is necessary to have supergfxctl function properly
+# plasma-login-manager has a bug where switching back to Hybrid hard locks the system on login
+# Last verified still an issue as of 2026-05-07
+sudo pacman -Syu sddm-kcm sddm
+sudo systemctl disable plasmalogin
 sudo systemctl enable sddm
-sudo pacman -Syu sddm-kcm cachyos-themes-sddm sddm
+sudo pacman -R plasma-login-manager
 
-# program to force iGPU mode
+# program to switch between iGPU mode and Hybrid
 sudo pacman -S supergfxctl
 sudo systemctl enable supergfxd
 sudo systemctl start supergfxd
@@ -97,34 +105,18 @@ sudo systemctl start supergfxd
 # supergfxctl --mode Integrated
 # supergfxctl --mode Hybrid
 
-# Battery life
+# Battery life - NOTE: Conflicts with the default KDE power manager
+# TODO: Verify after checking power usage if worth using in comparison to default power management
 sudo pacman -S auto-cpufreq
-``` TEMP - Verify later
-► sudo systemctl enable auto-cpufreq.service --now
-► sudo systemctl enable auto-cpufreq.service
-► sudo systemctl enable auto-cpufreq
-► sudo systemctl enable  auto-cpufreq
-► sudo systemctl enable --now auto-cpufreq
-
-sudo pacman -Syu plasma-login-manager
-sudo systemctl disable sddm
-sudo systemctl enable plasmalogin
-sudo pacman -R sddm-kcm cachyos-themes-sddm sddm
+sudo systemctl enable --now auto-cpufreq.service
+sudo systemctl enable --now auto-cpufreq
 ```
 
 # dGPU status
 cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status
 cat /proc/driver/nvidia/gpus/0000:01:00.0/power
 
-
-# NTFS (eventually new NTFS driver will replace the bad ntfs3 one, but until then, use ntfs-3g to avoid corrupting external HDDs all the time >_>)
-sudo pacman -S ntfs-3g
-
 ## laptop TAS2781 audio bug - Creates a service that auto resets the amp and device state to prevent the bug on audio source change
-## Bug still relevant as of 2025-07-15
+## Bug still relevant as of 2026-05-07
 # UNCOMMENT AFTER VERIFYING MANUALLY, NEVER AUTO RUN THIS https://github.com/DanielWeiner/tas2781-fix-16IRX8H
 # curl -s https://raw.githubusercontent.com/DanielWeiner/tas2781-fix-16IRX8H/refs/heads/main/install.sh | bash -s --
-
-
-## Shell opt out telemetry
-# DOTNET_CLI_TELEMETRY_OPTOUT
