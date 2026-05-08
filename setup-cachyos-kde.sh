@@ -14,6 +14,9 @@ systemctl status fstrim.timer
 # If not, run:
 # sudo systemctl enable --now fstrim.timer
 
+# Remove zsh (only use fish and bash)
+sudo pacman -Rs zsh cachyos-zsh-config
+
 # for Flatpak support
 sudo pacman -S flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
