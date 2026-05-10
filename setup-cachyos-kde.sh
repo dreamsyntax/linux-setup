@@ -33,7 +33,7 @@ sudo pacman -S --noconfirm vesktop # discord client with hardware accelerated sc
 sudo pacman -S --noconfirm vscode gimp blender godot shotcut keepassxc 7zip
 
 # gaming meta, not do not install cachyos-gaming-applications (unless you want heroic launcher and lutris)
-paru -S cachyos-gaming-meta
+sudo pacman -S cachyos-gaming-meta
 
 # additional gaming packages
 # gamescope # https://github.com/ValveSoftware/gamescope
@@ -42,8 +42,7 @@ paru -S cachyos-gaming-meta
 # mangohud # resource overlay
 
 # speedrun / capture and input capture packages
-sudo pacman -S --noconfirm love obs-studio
-sudo pacman -S lua51-sec # required for m-overlay
+sudo pacman -S --noconfirm obs-studio love lua51-sec # love and lua51-sec required for m-overlay
 sudo setcap cap_sys_ptrace=eip /usr/bin/love # required for m-overlay
 
 # Sunshine / Moonlight for Game Streaming / RDP
@@ -89,7 +88,7 @@ alias -s open "dolphin"
 # This is necessary to have supergfxctl function properly
 # plasma-login-manager has a bug where switching back to Hybrid hard locks the system on login
 # Last verified still an issue as of 2026-05-07
-sudo pacman -Syu sddm-kcm sddm
+sudo pacman -S sddm-kcm sddm
 sudo systemctl disable plasmalogin
 sudo systemctl enable sddm
 sudo pacman -R plasma-login-manager
