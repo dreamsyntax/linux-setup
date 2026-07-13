@@ -81,6 +81,7 @@ alias -s gp "git pull --prune"
 alias -s gs "git status"
 alias -s explorer "dolphin"
 alias -s open "dolphin"
+alias -s gpsmu "git submodule update --init --recursive"
 
 ########## LAPTOP ONLY ##########
 
@@ -112,6 +113,9 @@ sudo systemctl enable --now auto-cpufreq
 # dGPU status
 cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status
 cat /proc/driver/nvidia/gpus/0000:01:00.0/power
+
+# pull GPU wattage (repeats every 1 second until cancelled)
+nvidia-smi -l 1
 
 ## laptop TAS2781 audio bug - Creates a service that auto resets the amp and device state to prevent the bug on audio source change
 ## Bug still relevant as of 2026-05-07

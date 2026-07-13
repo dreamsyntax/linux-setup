@@ -24,6 +24,7 @@ alias gcb='git checkout -b'
 alias gd='git diff'
 alias gp='git pull --prune'
 alias gs='git status'
+alias gpsmu='git submodule update --init --recursive'
 # end my aliases
 EOF
 )
